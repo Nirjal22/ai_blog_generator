@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-    
-    <head>
-        {% load static %}
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>AI_Blog_Generator</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
-        <script src="{% static 'home.js' %}" defer></script>
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI_Blog_Generator</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <script src="{% static 'home.js' %}" defer></script>
 </head>
 
 <body>
@@ -16,16 +16,20 @@
             <h1 class="has-text-white ml-1 title">AI BLOG GENERATOR</h1>
         </div>
         <div class="navbar-end">
-            <ul class="is-flex mr-2">
-                <!-- Link for Register -->
-                <li class="m-2">
-                    <a href="{% url 'register' %}"><button class="button is-white">Register</button></a>
-                </li>
-                <!-- Link for Login -->
-                <li class="m-2">
-                    <a href="{% url 'login' %}"><button class="button is-white">Login</button></a>
-                </li>
-            </ul>
+            {% if user.is_authenticated %}
+            <!-- Show Sign Out button if the user is logged in -->
+            <a href="{% url 'signout' %}" class="navbar-item">
+                <button class="button is-white">Sign Out</button>
+            </a>
+            {% else %}
+            <!-- Show Login and Register buttons if the user is not logged in -->
+            <a href="{% url 'login' %}" class="navbar-item">
+                <button class="button is-white">Login</button>
+            </a>
+            <a href="{% url 'register' %}" class="navbar-item">
+                <button class="button is-white">Register</button>
+            </a>
+            {% endif %}
         </div>
     </nav>
 
