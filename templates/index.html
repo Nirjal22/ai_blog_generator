@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI_Blog_Generator</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
-    <script src="{% static 'home.js' %}" defer></script>
+    <script src="{% static 'home.js' %}?v={{ timestamp }}" defer></script>
 </head>
 
 <body>
@@ -42,11 +42,25 @@
             <button id="generateButton" class="button is-primary mt-4">Generate</button>
         </div>
     </div>
+
+    <div id="loadingIndicator" class="has-text-centered mt-4" style="display: none;">
+        <div class="loader"></div>
+        <p>Generating blog...</p>
+    </div>
+    <div id="generated_blogs" style="display: none;">
+        <h1 class="title">Generated blog</h1>
+        <p id="generated_content"></p>
+    </div>
+
+    <!--     
     <div id="loadingIndicator" class="is-hidden has-text-centered mt-4">
         <div class="loader"></div>
         <p>Generating blog...</p>
     </div>
-
+    <div id="generated_blogs" class="is-hidden">
+        <h1 class="title">Generated blog</h1>
+        <p id="generated_content"></p>
+    </div> -->
 </body>
 
 </html>
